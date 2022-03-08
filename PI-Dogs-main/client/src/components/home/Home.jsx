@@ -5,6 +5,7 @@ import {getDogs} from '../../actions';
 import {Link} from 'react-router-dom'
 
 import Card from '../card/Card';
+import Paginado from '../paginado/Paginado';
 
 
 
@@ -14,10 +15,16 @@ export default function Home() {
     const all_Dogs = useSelector((state)=> state.dogs)
     
     const [currentPage, setCurrentPage] = useState(1)
-    const [dogsPerPage] = useState(8) //seteo la cantidad de cartas que quiero que se muestre.
-    const indexOfLastDog = currentPage * dogsPerPage // me muestra en la pagina actual 9 recetas
-    const indexOfFirstDog = indexOfLastDog - dogsPerPage //
+    const [dogsPerPage, setDogsPerPage] = useState(8) 
+    const indexOfLastDog = currentPage * dogsPerPage 
+    const indexOfFirstDog = indexOfLastDog - dogsPerPage 
     const currentDogs = all_Dogs.slice(indexOfFirstDog, indexOfLastDog)
+
+    //paginado por numero de paginas
+    const paginado =  (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
+    
 
     useEffect(()=> {
         dispatch(getDogs());
@@ -57,6 +64,14 @@ export default function Home() {
                     <option value= 'atoz'>A to Z</option>
                     <option value= 'ztoa'>Z to A</option>
                 </select>
+
+                <Paginado
+                dogsPerPage = {dogsPerPage}
+                allDogs = {all_Dogs.length}
+                paginado = {paginado}
+                />
+
+
                 <div>
                     {
                         currentDogs?.map(e =>{
