@@ -1,7 +1,14 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {getDogs} from '../../actions';
+import {
+    getDogs, 
+    filterCreated, 
+    getTemperament, 
+    filterTemp,
+    filterByWeigth,
+    aplhabeticalSort,
+} from '../../actions';
 import {Link} from 'react-router-dom'
 
 import Card from '../card/Card';
@@ -20,6 +27,10 @@ export default function Home() {
     const indexOfFirstDog = indexOfLastDog - dogsPerPage 
     const currentDogs = all_Dogs.slice(indexOfFirstDog, indexOfLastDog)
 
+    const temperaments = useSelector((state)=> state.temperaments)
+
+    const [order, setOrder] = useState('')
+
     //paginado por numero de paginas
     const paginado =  (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -30,10 +41,42 @@ export default function Home() {
         dispatch(getDogs());
     },[dispatch])
 
+    useEffect(() => {
+        dispatch(getTemperament());
+    }, [dispatch])
+
+
     function handleClick(e){
         e.preventDefault();
         dispatch(getDogs());
     }
+
+    function handleFilterCreated (e){
+        dispatch(filterCreated(e.target.value))
+    }
+
+    function handleFilterTemp (e){
+        e.preventDefault();
+        dispatch(filterTemp(e.target.value));
+        setCurrentPage(1)
+    }
+
+    function handleFilterByWeigth(e){
+       e.preventDefault();
+       dispatch(filterByWeigth(e.target.value))
+       setCurrentPage(1)
+       setOrder(`Order'${e.target.value}`) 
+    }
+
+    function handleAplhabeticalSort (e){
+        e.preventDefault();
+        dispatch(aplhabeticalSort(e.target.value))
+        setCurrentPage(1)
+        setOrder(`Order'${e.target.value}`)
+    }
+
+    
+
 
     return(
         <div>
@@ -47,19 +90,22 @@ export default function Home() {
                 Charge all dogs again!
             </button>
             <div>
-                <select defaultValue={'DEFAULT'}>
+                <select defaultValue={'DEFAULT'} onChange={handleFilterTemp}>
                     <option value='all'>All Temperaments</option>
+                    {temperaments.map(e => (
+                        <option key={e.name}>{e.name}</option>
+                    ))}
                 </select>
-                <select defaultValue={'DEFAULT'}>
+                <select defaultValue={'DEFAULT'} onChange={e =>{handleFilterByWeigth(e)}}>
                     <option value='min'>Minor weight</option>
                     <option value='maj'>Major weight</option>
                 </select>
-                <select defaultValue={'DEFAULT'}>
+                <select defaultValue={'DEFAULT'} onChange={e => {handleFilterCreated(e)}}>
                     <option  value= 'DEFAULT' disable selected>All</option>
                     <option value= 'api'>Exist</option>
                     <option value='db'>Created</option>
                 </select>
-                <select defaultValue={'DEFAULT'}>
+                <select defaultValue={'DEFAULT'} onChange={e => {handleAplhabeticalSort(e)}}>
                     <option value= 'DEFAULT' disable selected >Alphabetical</option>
                     <option value= 'atoz'>A to Z</option>
                     <option value= 'ztoa'>Z to A</option>

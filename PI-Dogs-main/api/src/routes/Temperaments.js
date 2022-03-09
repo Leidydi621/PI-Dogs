@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
     const allDogTemp = dogApiTemp.map(el => {
             return el.temperament;
     })
-    const eachTemp = allDogTemp.toString().split(",").filter(e => e !== "");
+    const eachTemp = allDogTemp.toString().split(/\s*,\s*/).filter(e => e !== "");
 
     for (elem of eachTemp) {
         Temperament.findOrCreate({
