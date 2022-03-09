@@ -5,6 +5,7 @@ import {
     FILTER_TEMP, 
     FILTER_WEIGTH, 
     ALPHABETICAL_SORT,
+    GET_DOG_BY_NAME,
 } from '../actions'
 
 const initialState = {
@@ -89,6 +90,19 @@ function rootReducer ( state = initialState, action){
               ...state,
               dogs: sortedDogs
             }
+
+        case GET_DOG_BY_NAME:
+            if (action.payload.length <1){
+                alert("Dog not found")
+            } else{
+
+                return{
+                    ...state,
+                    dogs : action.payload
+                }
+            }
+            
+
             
 
         default:

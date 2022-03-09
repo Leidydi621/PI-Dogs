@@ -9,10 +9,11 @@ import {
     filterByWeigth,
     aplhabeticalSort,
 } from '../../actions';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 import Card from '../card/Card';
 import Paginado from '../paginado/Paginado';
+import SearchBar from '../searchBar/SearchBar';
 
 
 
@@ -111,12 +112,16 @@ export default function Home() {
                     <option value= 'ztoa'>Z to A</option>
                 </select>
 
+                <SearchBar/>
+
+
+                <div>
                 <Paginado
                 dogsPerPage = {dogsPerPage}
                 allDogs = {all_Dogs.length}
                 paginado = {paginado}
                 />
-
+                </div>
 
                 <div>
                     {

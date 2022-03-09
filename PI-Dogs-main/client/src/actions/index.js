@@ -6,6 +6,7 @@ export const GET_TEMPERAMENT = 'GET_TEMPERAMENT'
 export const FILTER_TEMP = 'FILTER_TEMP'
 export const FILTER_WEIGTH = 'FILTER_WEIGTH'
 export const ALPHABETICAL_SORT = 'ALPHABETICAL_SORT'
+export const GET_DOG_BY_NAME = 'GET_DOG_BY_NAME'
 
 
 export function getDogs(){
@@ -65,6 +66,22 @@ export function aplhabeticalSort(payload) {
         type: ALPHABETICAL_SORT,
         payload
     }
+}
+
+export function getDogByName (payload){
+    return function (dispatch){
+        return axios.get(`http://localhost:3001/dogs?name=${payload}`, {})
+        .then((json) => {
+            return dispatch({
+                type: GET_DOG_BY_NAME,
+                payload: json.data,
+            })
+        })
+        .catch((error)=>{
+            return alert ('Dog Not Found')
+        })
+    }
+
 }
 
 
