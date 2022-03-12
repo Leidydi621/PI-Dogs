@@ -82,41 +82,41 @@ A continuación se detallaran los requerimientos mínimos para la aprobación de
 __IMPORTANTE__: No se permitirá utilizar librerías externas para aplicar estilos a la aplicación. Tendrán que utilizar CSS con algunas de las opciones que vimos en dicha clase (CSS puro, CSS Modules o Styled Components)
 
 #### Tecnologías necesarias:
-- [ ] React
-- [ ] Redux
-- [ ] Express
-- [ ] Sequelize - Postgres
+- [x] React
+- [x] Redux
+- [x] Express
+- [x] Sequelize - Postgres
 
 #### Frontend
 
 Se debe desarrollar una aplicación de React/Redux que contenga las siguientes pantallas/rutas.
 
 __Pagina inicial__: deben armar una landing page con
-- [ ] Alguna imagen de fondo representativa al proyecto
-- [ ] Botón para ingresar al home (`Ruta principal`)
+- [x] Alguna imagen de fondo representativa al proyecto
+- [x] Botón para ingresar al home (`Ruta principal`)
 
 __Ruta principal__: debe contener
-- [ ] Input de búsqueda para encontrar razas de perros por nombre
-- [ ] Área donde se verá el listado de razas de perros. Deberá mostrar su:
+- [x] Input de búsqueda para encontrar razas de perros por nombre
+- [x] Área donde se verá el listado de razas de perros. Deberá mostrar su:
   - Imagen
   - Nombre
   - Temperamento
   - Peso
-- [ ] Botones/Opciones para filtrar por:
+- [x] Botones/Opciones para filtrar por:
     - Temperamento 
     - Raza existente (es decir las que vienen de la API) o agregada por nosotros (creadas mediante el form)
-- [ ] Botones/Opciones para ordenar tanto ascendentemente como descendentemente las razas de perro por:
+- [x] Botones/Opciones para ordenar tanto ascendentemente como descendentemente las razas de perro por:
     - Orden alfabético 
     - Peso
-- [ ] Paginado para ir buscando y mostrando las siguientes razas, mostrando 8 razas por página.
+- [x] Paginado para ir buscando y mostrando las siguientes razas, mostrando 8 razas por página.
 
 __IMPORTANTE__: Dentro de la Ruta Principal se deben mostrar tanto las razas de perros traidas desde la API como así también las de la base de datos, pero NO está permitido almacenar en la base de datos las razas de perros de la API sino que solamente se pueden guardar aquellas creadas desde el form.
 
 __Ruta de detalle de raza de perro__: debe contener
-- [ ] Los campos mostrados en la ruta principal para cada raza (imagen, nombre y temperamento)
-- [ ] Altura
-- [ ] Peso
-- [ ] Años de vida
+- [X] Los campos mostrados en la ruta principal para cada raza (imagen, nombre y temperamento)
+- [X] Altura
+- [X] Peso
+- [X] Años de vida
 
 __Ruta de creación de raza de perro__: debe contener
 - [ ] Un formulario __controlado__ con los siguientes campos
@@ -124,20 +124,20 @@ __Ruta de creación de raza de perro__: debe contener
   - Altura (Diferenciar entre altura mínima y máxima)
   - Peso (Diferenciar entre peso mínimo y máximo)
   - Años de vida
-- [ ] Posibilidad de seleccionar/agregar uno o más temperamentos
-- [ ] Botón/Opción para crear una nueva raza de perro
+- [X] Posibilidad de seleccionar/agregar uno o más temperamentos
+- [x] Botón/Opción para crear una nueva raza de perro
 
 #### Base de datos
 
 El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
 
-- [ ] Raza con las siguientes propiedades:
+- [x] Raza con las siguientes propiedades:
   - ID *
   - Nombre *
   - Altura *
   - Peso *
   - Años de vida
-- [ ] Temperamento con las siguientes propiedades:
+- [x] Temperamento con las siguientes propiedades:
   - ID
   - Nombre
 

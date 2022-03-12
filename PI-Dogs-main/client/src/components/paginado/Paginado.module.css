@@ -1,0 +1,13 @@
+.paginado {
+    display: flex;
+    justify-content: center;
+    align-content: end;
+    
+}
+
+.btn{
+    background: transparent;
+    border-radius: 10px;
+    border-color: transparent;
+    color: purple;
+}

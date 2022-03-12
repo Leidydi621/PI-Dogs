@@ -15,6 +15,7 @@ en su propia base de datos y luego ya utilizarlos desde allí */
 router.get('/', async (req, res) => {
     
     const dogApiTemp = await getApiInfo();
+   
     const allDogTemp = dogApiTemp.map(el => {
             return el.temperament;
     })

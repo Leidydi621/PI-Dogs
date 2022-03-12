@@ -6,12 +6,16 @@ import {
     FILTER_WEIGTH, 
     ALPHABETICAL_SORT,
     GET_DOG_BY_NAME,
+    GET_DOG_BY_ID,
+    CREATE_DOG,
 } from '../actions'
 
 const initialState = {
     dogs : [],
     temperaments : [],
+    detail : [],
 }
+
 
 function rootReducer ( state = initialState, action){
     switch (action.type) {
@@ -31,6 +35,7 @@ function rootReducer ( state = initialState, action){
             }
 
         case GET_TEMPERAMENT:
+         
             return{
                 ...state,
                 temperaments: action.payload,
@@ -102,6 +107,19 @@ function rootReducer ( state = initialState, action){
                 }
             }
             
+        case GET_DOG_BY_ID:
+            return {
+                ...state,
+                detail: action.payload, 
+              
+            }
+
+        case CREATE_DOG:
+            return {
+                ...state,
+            }     
+  
+      
 
             
 

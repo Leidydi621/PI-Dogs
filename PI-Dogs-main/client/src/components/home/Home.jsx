@@ -15,6 +15,7 @@ import Card from '../card/Card';
 import Paginado from '../paginado/Paginado';
 import SearchBar from '../searchBar/SearchBar';
 
+import style from './Home.module.css'
 
 
 export default function Home() {
@@ -81,7 +82,7 @@ export default function Home() {
 
     return(
         <div>
-            <Link to= '/dogs'>
+            <Link to= '/dog'>
                 <button >
                     Register your Dog here!
                 </button>

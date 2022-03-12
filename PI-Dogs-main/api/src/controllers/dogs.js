@@ -35,6 +35,7 @@ const getDbInfo= async()=> {
     })
 }
 
+
 // concateno las dos infos db y api
 const allDogs = async()=> {
     const apiInfo = await getApiInfo();

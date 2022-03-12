@@ -7,6 +7,8 @@ export const FILTER_TEMP = 'FILTER_TEMP'
 export const FILTER_WEIGTH = 'FILTER_WEIGTH'
 export const ALPHABETICAL_SORT = 'ALPHABETICAL_SORT'
 export const GET_DOG_BY_NAME = 'GET_DOG_BY_NAME'
+export const GET_DOG_BY_ID  = 'GET_DOG_BY_ID'
+export const CREATE_DOG = 'CREATE_DOG'
 
 
 export function getDogs(){
@@ -77,11 +79,42 @@ export function getDogByName (payload){
                 payload: json.data,
             })
         })
-        .catch((error)=>{
+        .catch(()=>{
             return alert ('Dog Not Found')
         })
     }
 
 }
+
+export function getDogById(id) {
+    return (dispatch) => {
+        axios.get('http://localhost:3001/dogs/' + id)
+            .then(res => {
+                dispatch({
+                    type: GET_DOG_BY_ID,
+                    payload: res.data
+                })
+            })
+    }
+}
+
+
+export function postDog (payload){
+    return function (dispatch){
+        return axios.post('http://localhost:3001/dog', payload)
+        .then((json) => {
+            return dispatch({
+                type: CREATE_DOG,
+                payload: json.data,
+            })
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+
+    }
+
+}
+
 
 
