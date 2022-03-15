@@ -4,6 +4,8 @@ import { useDispatch, useSelector, } from 'react-redux';
 import { Link, useHistory } from "react-router-dom";
 import {postDog, getTemp} from '../../actions'
 
+import style from './DogCreate.module.css'
+
 
 
 function validate (input){
@@ -88,55 +90,54 @@ export default function DogCreate(){
     }
 
     return (
-        <div>
-            <Link to='/home'>
-                <button>Go back</button>
-            </Link>
-            <h1>Registra a tu mejor amigo!</h1>
+        <div className={style.bkg}>
+        <div className={style.create}>
+            <h1 className={style.msg}>Registra a tu mejor amigo!</h1>
 
             <form onSubmit={e => handleSubmit(e)}>
-                <div>
-                    <div>
-                        <label >Name:</label>
+                <div  className={style.form}>
+                    <div className={style.prettierForm}>
+                    <div  className={style.nameInput}>
+                        <label className={style.msgs}>Name:</label>
                         <input name="name" type="text" value={input.name} onChange={e => handleInputChange(e)}/>
                         {errors.name && (
-                            <span >{errors.name}</span>
+                            <span className="errors" >{errors.name}</span>
                         )}
                     </div>
-                    <div>
-                        <label >Weight</label>
+                    <div className={style.nameInput}>
+                        <label className={style.msgs} >Weight</label>
                         <input name="weight" type="number" value={input.weight} onChange={e => handleInputChange(e)}/>
                         {errors.weight && (
-                            <span>{errors.weight}</span>
+                            <span className="errors">{errors.weight}</span>
                         )}
                     </div>
-                    <div>
-                        <label >Height:</label>
+                    <div className={style.nameInput}>
+                        <label className={style.msgs} >Height:</label>
                         <input name="height" type="number" value={input.height} onChange={e => handleInputChange(e)}/>
                         {errors.height && (
-                            <span >{errors.height}</span>
+                            <span className="errors" >{errors.height}</span>
                         )}
                     </div>
-                    <div>
-                        <label >Life span:</label>
+                    <div className={style.nameInput}>
+                        <label className={style.msgs} >Life span:</label>
                         <input name="life_span" type="number" value={input.life_span} onChange={e => handleInputChange(e)}/>
                         {errors.life_span && (
-                            <span >{errors.height}</span>
+                            <span className="errors" >{errors.height}</span>
                         )}
                     </div>
 
-                    <div>
-                    <label >Image:</label>
+                    <div className={style.nameInput}>
+                    <label className={style.msgs} >Image:</label>
                         <input name="Image" type="url"  value={input.image} placeholder="http://myimageontheweb.com.." onChange={e => handleInputChange(e)}/>
                         {errors.life_span && (
-                            <span >{errors.height}</span>
+                            <span className="errors" >{errors.height}</span>
                         )}
 
                     </div>
-                        
-                    <div >
+                    </div>     
+                    <div className={style.section}>
                         <label >Temperament Types:</label>
-                         <select onChange={(e)=>handleSelect(e)} >
+                         <select onChange={(e)=>handleSelect(e)} className={style.selectTemp}>
                             {temperaments?.map((temp) => {
                              return (
                                 <option key={temp.id} value={temp.name}>
@@ -147,23 +148,23 @@ export default function DogCreate(){
                         </select>
                     </div>
                 </div>
-                <div>
-
-                    <button type="submit" disabled = {input.temperament.length < 2 || input.temperament.length >= 5 ? true : false}> Create Dog</button>
-                </div>
-
-
-
-            </form>
-            <div >
+            <div className={style.boxSelectTemp}>
            
                  {input.temperament.map(el =>
-                     <div  key={el}> <p key={el}>{el}</p> 
-                         <button onClick={()=> handleDelete(el)}>X</button>
+                     <div className={style.temps} key={el}> <p key={el}>{el}</p> 
+                         <button className={style.btnDelete} onClick={()=> handleDelete(el)}>X</button>
                      </div>
                  )}   
             </div>
+                <div>
+                    <button className={style.submitButton} type="submit" disabled = {input.temperament.length < 2 || input.temperament.length >= 5 ? true : false}> Create Dog</button>
+                </div>
+            <Link to='/home'>
+                <button className={style.goBackButton}>Go back</button>
+            </Link>
 
+            </form>
+        </div>
         </div>
     )
 
