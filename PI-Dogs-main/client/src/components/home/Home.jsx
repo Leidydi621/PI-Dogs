@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {
     getDogs, 
     filterCreated, 
-    getTemperament, 
+    getTemp, 
     filterTemp,
     filterByWeigth,
     aplhabeticalSort,
@@ -44,7 +44,7 @@ export default function Home() {
     },[dispatch])
 
     useEffect(() => {
-        dispatch(getTemperament());
+        dispatch(getTemp());
     }, [dispatch])
 
 
@@ -81,50 +81,62 @@ export default function Home() {
 
 
     return(
-        <div>
+        <div className={style.page}>
+            <header className={style.header}>
+                <div className={style.container_header}>
+
             <Link to= '/dog'>
-                <button >
-                    Register your Dog here!
+                <button className={style.btn}>
+                    Register
                 </button>
             </Link>
-            <h1>The Best Friends  </h1>
-            <button  onClick={e => {handleClick(e)}}>
-                Charge all dogs again!
+            <h1 className={style.title}>The Best Friends  </h1>
+            <button className={style.btn}  onClick={e => {handleClick(e)}}>
+                Charge all!
             </button>
-            <div>
-                <select defaultValue={'DEFAULT'} onChange={handleFilterTemp}>
-                    <option value='all'>All Temperaments</option>
-                    {temperaments.map(e => (
-                        <option key={e.name}>{e.name}</option>
-                    ))}
-                </select>
-                <select defaultValue={'DEFAULT'} onChange={e =>{handleFilterByWeigth(e)}}>
-                    <option value='min'>Minor weight</option>
-                    <option value='maj'>Major weight</option>
-                </select>
-                <select defaultValue={'DEFAULT'} onChange={e => {handleFilterCreated(e)}}>
-                    <option  value= 'DEFAULT' disable selected>All</option>
-                    <option value= 'api'>Exist</option>
-                    <option value='db'>Created</option>
-                </select>
-                <select defaultValue={'DEFAULT'} onChange={e => {handleAplhabeticalSort(e)}}>
-                    <option value= 'DEFAULT' disable selected >Alphabetical</option>
-                    <option value= 'atoz'>A to Z</option>
-                    <option value= 'ztoa'>Z to A</option>
-                </select>
+            </div >
+            </header>
 
-                <SearchBar/>
-
-
-                <div>
+            <div className={style.container_nav}>
+                <div className={style.nav}>
+                  <SearchBar/>
+                  <div className={style.select}>
+                    <select className={style.filter} defaultValue={'DEFAULT'} onChange={handleFilterTemp}>
+                        <option value='all'>All Temperaments</option>
+                        {temperaments.map(e => (
+                            <option key={e.name}>{e.name}</option>
+                        ))}
+                    </select>
+                    <select className={style.order} defaultValue={'DEFAULT'} onChange={e =>{handleFilterByWeigth(e)}}>
+                        <option value='min'>Minor weight</option>
+                        <option value='maj'>Major weight</option>
+                    </select>
+                    <select className={style.filter} defaultValue={'DEFAULT'} onChange={e => {handleFilterCreated(e)}}>
+                        <option  value= 'DEFAULT' disable selected>All Dogs</option>
+                        <option value= 'api'>Exist</option>
+                        <option value='db'>Created</option>
+                    </select>
+                    <select className={style.order} defaultValue={'DEFAULT'} onChange={e => {handleAplhabeticalSort(e)}}>
+                        <option value= 'DEFAULT' disable selected >Alphabetical</option>
+                        <option value= 'atoz'>A to Z</option>
+                        <option value= 'ztoa'>Z to A</option>
+                    </select>
+                  </div>
+                </div>
+            <div className={style.paginado}>
+                <div className={style.containerP}>
                 <Paginado
-                dogsPerPage = {dogsPerPage}
-                allDogs = {all_Dogs.length}
-                paginado = {paginado}
+                    dogsPerPage = {dogsPerPage}
+                    allDogs = {all_Dogs.length}
+                    paginado = {paginado}
                 />
                 </div>
+             </div>
+            </div> 
 
-                <div>
+
+                <div className={style.content}>
+                    <div className={style.gri}>
                     {
                         currentDogs?.map(e =>{
                             return(
@@ -134,8 +146,25 @@ export default function Home() {
                             )
                         })
                     }
+                    </div>
                 </div>
-            </div>
+            <footer>
+
+
+                    <div className={style.container_footer}>
+                        <div className={style.box_footer}>
+                            <div>
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3egoLK7JiJ3adAUT3AAw6029w-PNIO-G8Hdq0947LCG7LpWd9lP8e3AngBA5Nxnhxw6I&usqp=CAU" alt= "img not found" width= "100px" height= "100px"/>
+                            </div>
+                        </div>
+                        <div className={style.box_footer}>
+                            <div>
+                                <h2>PI Bootcamp Henry - Dogs</h2>
+                            </div>
+                        </div>
+
+                    </div>
+                </footer>
 
         </div>
     )

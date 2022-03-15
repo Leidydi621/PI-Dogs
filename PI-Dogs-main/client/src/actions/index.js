@@ -33,7 +33,7 @@ export function filterCreated(payload){
     }
 }
 
-export function getTemperament(){
+export function getTemp(){
     return function (dispatch){
         return axios.get('http://localhost:3001/temperament', {})
         .then((json) => {

@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector, } from 'react-redux';
 import { Link, useHistory } from "react-router-dom";
-import {postDog, getTemperament} from '../../actions'
+import {postDog, getTemp} from '../../actions'
 
 
 
@@ -32,7 +32,7 @@ export default function DogCreate(){
 
 
     useEffect(() => { 
-        dispatch(getTemperament())
+        dispatch(getTemp())
     }, [dispatch])    
 
 

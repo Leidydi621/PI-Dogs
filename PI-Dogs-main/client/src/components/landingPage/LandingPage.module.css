@@ -1,16 +1,8 @@
 .body{
-    margin: 0;
+    margin:0;
     padding: 0;
 }
-
-.bgk{
-    
-    background-repeat: none;
-    background-size: cover;
-
-}
-
-.header{
+.header.content{
     font-family: 'Raleway', sans-serif;
     font-size: 2.5em;
     text-align: center;
@@ -24,27 +16,28 @@
     text-shadow: 0 1px 7px rgba(0, 0, 0, .7);
 }
 
+
 .btn {
     background: linear-gradient(to right, transparent 20%, #FA8072);
     background-size: 200%;
     background-position: left;
     transition: background-position 0.5s;
-    color: #FF4040;
+    color: #E17666;
     font-size: 0.89rem;
     width: 120px;
     height: 35px;
-    padding: .55rem 1.8rem;
+    padding: .09rem 1rem;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .btn:hover {
     background-position: right;
-    color: rgb(10, 10, 10);
+    color: #9E5638;
     font-weight: 700;
 }
 
-.header-overlay {
+.header.overlay {
     height: 100vh;
     width: 100vw;
     position: absolute;
@@ -66,4 +59,4 @@
     z-index: -1000;
     visibility: visible;
 }
-
+ 
