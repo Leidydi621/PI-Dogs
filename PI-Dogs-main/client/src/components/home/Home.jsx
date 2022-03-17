@@ -141,7 +141,13 @@ export default function Home() {
                         currentDogs?.map(e =>{
                             return(
                                 <Link to = {'/detail/' + e.id} key={e.id}>
-                                    <Card name={e.name} image={e.image} weight={e.weight} temperament={e.temperament} temperaments={e.temperaments}></Card>
+                                    <Card 
+                                    name={e.name} 
+                                    image={e.image? e.image : "https://m1.paperblog.com/i/460/4600328/4-fotos-perritos-tiernos-bonitos-peludos-pant-L-JXPzXg.jpeg"} 
+                                    weight={e.weight} 
+                                    temperament={e.temperament} 
+                                    temperaments={e.temperaments}
+                                    ></Card>
                                 </Link>
                             )
                         })
