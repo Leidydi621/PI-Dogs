@@ -23,7 +23,7 @@ export default function Detail (props){
                 myDog.length>0 ?
                 <div>
                     <div>
-                        <img className={style.img} src={myDog[0].image} alt= "img not found" width= "300px" height= "300px" />
+                        <img className={style.img} src={myDog[0].image? myDog[0].image : "https://m1.paperblog.com/i/460/4600328/4-fotos-perritos-tiernos-bonitos-peludos-pant-L-JXPzXg.jpeg"} alt= "img not found" width= "300px" height= "300px" />
                     </div>
                     <div className={style.containerCard}>
                     <div className={style.card}>
