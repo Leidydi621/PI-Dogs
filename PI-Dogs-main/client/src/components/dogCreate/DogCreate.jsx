@@ -14,6 +14,7 @@ function validate (input){
     if (input.weight < 1 || input.weight > 100) errors.weight =  'Weight Min is required';
     if (input.height < 1 || input.height > 100) errors.height = 'Height Min is required';
     if (input.life_span < 1 || input.life_span > 100) errors.life_span = 'Must be greater than 0';
+    if (input.temperaments > 1) errors.temperaments = "The temperament is reapeted"
     return errors;
 }
 
@@ -150,7 +151,9 @@ export default function DogCreate(){
                 </div>
             <div className={style.boxSelectTemp}>
            
-                 {input.temperament.map(el =>
+                 {input.temperament.filter((item, index) =>{
+                     return input.temperament.indexOf(item) === index;
+                 }).map(el =>
                      <div className={style.temps} key={el}> <p key={el}>{el}</p> 
                          <button className={style.btnDelete} onClick={()=> handleDelete(el)}>X</button>
                      </div>
